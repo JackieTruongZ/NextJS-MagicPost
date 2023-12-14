@@ -64,20 +64,20 @@ async function request(values: any) {
     Swal.fire({
       icon: "error",
       title: "Oops...",
-      text: `Something went wrong! ${error.response.data.message}`
+      text: `Something went wrong! ${error}`
     });
   }
 }
 
 export default function MyForm() {
-  const handleSubmit = (values: any, { setSubmitting }) => {
+  const handleSubmit = (values: any) => {
     // Gửi dữ liệu nếu hợp lệ
     console.log('Form submitted:', values);
 
     //Dùng axios để gọi API
     request(values);
 
-    setSubmitting(false);
+    // setSubmitting(false);
   };
 
   return (
