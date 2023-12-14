@@ -1,0 +1,62 @@
+.nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(255, 114, 94, 0.50) 0%, rgba(217, 217, 217, 0.20) 100%);
+}
+
+.nav-title {
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.nav-user {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  .avatar {
+    border-radius: 50%;
+  }
+}
+
+.nav-username {
+  font-size: 20px;
+}
+
+.nav-login {
+  font-size: 20px;
+}
+
+.menu-container {
+  z-index: 9999;
+}
+
+/* pig hero  */
+
+.pig {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  /* transform: rotateY(180deg); */
+  background-image: url('../../favicon.ico');
+  animation-name: runPig;
+  animation-duration: 10s;
+  animation-direction: alternate;  
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+}
+@keyframes runPig {
+  0%   { left: -400px; top: 0px; transform: rotateY(180deg); }
+  28%   {transform: rotateY(180deg);}
+  30% { left: 400px; top: 0px; transform: rotateY(0deg); }
+  58% { transform: rotateY(0deg);}
+  60% {left: -400px; top: 0px; transform: rotateY(180deg);}
+  98%   {transform: rotateY(180deg);}
+  100% { left: 690px; top: 0px; transform: rotateY(0deg); }
+} 
