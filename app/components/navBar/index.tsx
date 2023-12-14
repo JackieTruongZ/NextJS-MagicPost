@@ -23,6 +23,9 @@ const NavBar = () => {
       setIsOpen(!isOpen);
     } else {
       setIsOpen(false);
+      if (event.target.closest('.nav-title')) {
+        window.location.href = '/dashboard';
+      }
     }
   };
 
