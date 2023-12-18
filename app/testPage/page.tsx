@@ -30,10 +30,10 @@ const employeeTypes = [
 ];
 
 export default function MyForm() {
-  const handleSubmit = (values: any) => {
+  const handleSubmit = (values, { setSubmitting }) => {
     // Gửi dữ liệu nếu hợp lệ
     console.log('Form submitted:', values);
-    // setSubmitting(false);
+    setSubmitting(false);
   };
 
   return (
