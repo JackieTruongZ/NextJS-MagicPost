@@ -13,6 +13,12 @@ interface Props {
 const ListAccount = ({view}: Props) => {
   const baseService = new BaseService();
   const [users, setUsers] = useState<UserRoleInfor[] | undefined>();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,12 +54,6 @@ const ListAccount = ({view}: Props) => {
         <Column header="Họ và Tên" body={(rowData) => <span>{rowData.user.firstName} {rowData.user.lastName}</span>} />
         <Column field="password" header="Mật khẩu"
           body={(rowData) => {
-            const [showPassword, setShowPassword] = useState(false);
-
-            const togglePasswordVisibility = () => {
-              setShowPassword(!showPassword);
-            };
-
             return (
               <div className='font-italic font-medium' onClick={togglePasswordVisibility}>
                 {showPassword ? rowData.user.password : '******'}
