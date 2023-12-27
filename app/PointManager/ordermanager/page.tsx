@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from 'primereact/button';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { orderFilter } from '@/public/utils/Utils';
 import { TabMenu } from 'primereact/tabmenu';
 import './style.css';
@@ -16,7 +16,16 @@ function OrderManager() {
   const createUser = () => {
     window.location.href = '/createOrder';
   }
-  const roleIdStore = window.localStorage.getItem('roleId');
+
+  const [roleId, setRoleId] = useState('');
+
+  useEffect(() => {
+    const storedroleId: string | null = window.localStorage.getItem('roleId')
+    if (storedroleId) {
+      setRoleId(storedroleId);
+    }
+  }, []);
+
   return (
     <div>
       <p>Order Manager</p>
@@ -35,12 +44,12 @@ function OrderManager() {
         (activeIndex == 0) && (
           <div>
             {
-              (roleIdStore == '51') && (
+              (roleId == '51') && (
                 <ListOrderOnTrans />
               )
             }
-              {
-              (roleIdStore == '52') && (
+            {
+              (roleId == '52') && (
                 <ListOrderOnHub />
               )
             }
