@@ -1,25 +1,22 @@
 'use client'
 
 import { BaseService } from '@/app/service/BaseService'
-import { UserRoleInfor } from '@/public/utils/interface'; 
+import { UserRoleInfor } from '@/public/utils/interface';
 import { Column } from 'primereact/column';
 import { DataTable } from 'primereact/datatable';
 import React, { useEffect, useState } from 'react'
 
 interface Props {
-  view: string|undefined;
+  view: string | undefined;
 }
 
-const ListAccount = ({view}: Props) => {
+const ListAccount = ({ view }: Props) => {
   const baseService = new BaseService();
   const [users, setUsers] = useState<UserRoleInfor[] | undefined>();
   const [showPassword, setShowPassword] = useState(false);
-
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -48,9 +45,9 @@ const ListAccount = ({view}: Props) => {
     <div className='listaccount'>
       {/* <p>ListAccount</p> */}
       <DataTable value={users} stripedRows className='cursor-pointer listview' tableStyle={{ minWidth: '50rem' }}>
-        <Column field="id" header="Id" body={(rowData)=><span>{rowData.user.id}</span>}></Column>
-        <Column field="username" header="Username" body={(rowData)=><span>{rowData.user.username}</span>}></Column>
-        <Column field="email" header="Email" body={(rowData)=><span>{rowData.user.email}</span>}></Column>
+        <Column field="id" header="Id" body={(rowData) => <span>{rowData.user.id}</span>}></Column>
+        <Column field="username" header="Username" body={(rowData) => <span>{rowData.user.username}</span>}></Column>
+        <Column field="email" header="Email" body={(rowData) => <span>{rowData.user.email}</span>}></Column>
         <Column header="Họ và Tên" body={(rowData) => <span>{rowData.user.firstName} {rowData.user.lastName}</span>} />
         <Column field="password" header="Mật khẩu"
           body={(rowData) => {
@@ -61,8 +58,8 @@ const ListAccount = ({view}: Props) => {
             );
           }}
         ></Column>
-         <Column field="rowName" header="Chức vụ" body={(rowData)=><span>{rowData.role.name}</span>}></Column>
-        <Column field="createdAt" header="Ngày tham gia" body={(rowData)=><span>{rowData.user.createdAt.slice(0,10)}</span>}></Column>
+        <Column field="rowName" header="Chức vụ" body={(rowData) => <span>{rowData.role.name}</span>}></Column>
+        <Column field="createdAt" header="Ngày tham gia" body={(rowData) => <span>{rowData.user.createdAt.slice(0, 10)}</span>}></Column>
       </DataTable>
       {
         !users && (
