@@ -1,5 +1,6 @@
 import React from 'react'
 import MenuItem from './MenuItems'
+import './style.css'
 
 interface Props {
     roleId: string;
@@ -7,10 +8,10 @@ interface Props {
 
 const Menu = ({ roleId }: Props) => {
     return (
-        <div className="flex absolute left-50">
+        <div className="h-full flex flex-row">
             {
                 (roleId == '5') && (
-                    <div>
+                    <div className='h-full flex flex-row'>
                         <MenuItem onClick={() => { window.location.href = '/director/pointmanager' }}>
                             <div>
                                 <p>Point</p>
@@ -32,7 +33,7 @@ const Menu = ({ roleId }: Props) => {
 
             {
                 (['51', '52'].includes(roleId)) && (
-                    <div>
+                    <div className='h-full flex flex-row'>
                         <MenuItem onClick={() => { window.location.href = '/PointManager/accountmanager' }}>
                             <div>
                                 <p>Account</p>
@@ -47,12 +48,12 @@ const Menu = ({ roleId }: Props) => {
                 )
             }
 
-{
+            {
                 (['511', '512', '521'].includes(roleId)) && (
-                    <div>
+                    <div className='h-full flex flex-row'>
                         <MenuItem onClick={() => { window.location.href = '/Staff' }}>
                             <div>
-                                <p>Làm việc thôi</p>
+                                <p style={{ width: "max-content" }}>Làm việc thôi</p>
                             </div>
                         </MenuItem>
                     </div>

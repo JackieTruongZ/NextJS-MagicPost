@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import '../public/theme/theme.css';
 import '../node_modules/primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
+import BottomBar from './components/bottomBar/page';
         
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,9 +26,11 @@ export default function RootLayout({
     <html lang="en">
         <body className={inter.className}>
           <NavBar/>
+          <BottomBar/>
           <main className='w-full'>
             {children}
           </main>
+        <div className='h-4rem'></div>
           <Footer/>
         </body>
     </html>

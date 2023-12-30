@@ -13,22 +13,20 @@ import ListOrderOnHub from './ListOrderOnHub';
 function OrderManager() {
   const [view, setView] = useState();
   const [activeIndex, setActiveIndex] = useState(0);
-  const createUser = () => {
-    window.location.href = '/createOrder';
-  }
-
   const [roleId, setRoleId] = useState('');
 
   useEffect(() => {
-    const storedroleId: string | null = window.localStorage.getItem('roleId')
-    if (storedroleId) {
-      setRoleId(storedroleId);
+    const roleIdStore = window.localStorage.getItem('roleId');
+    if (roleIdStore) {
+      setRoleId(roleIdStore);
     }
-  }, []);
+  }, []); // Empty dependency array to run the effect only once
 
+  const createUser = () => {
+    window.location.href = '/createOrder';
+  };
   return (
     <div>
-      <p>Order Manager</p>
       <div className='flex mb-2'>
         <Button label='+ Tạo đơn hàng' className='flex right-0 mr-4 pl-3' onClick={createUser} />
       </div>
@@ -48,7 +46,7 @@ function OrderManager() {
                 <ListOrderOnTrans />
               )
             }
-            {
+              {
               (roleId == '52') && (
                 <ListOrderOnHub />
               )

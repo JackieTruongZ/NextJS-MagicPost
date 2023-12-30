@@ -6,8 +6,9 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { BaseService } from '../service/BaseService';
 import { Toast } from 'primereact/toast';
+import Swal from 'sweetalert2';
 
-function FindOrder() {
+function FindOrder({childState, setChildState}: any ) {
     const [searchTerm, setSearchTerm] = useState('');
     const toast = useRef<Toast | null>(null);
 const baseService: BaseService = new BaseService();
@@ -16,8 +17,9 @@ const baseService: BaseService = new BaseService();
         try {
             const order :any = await baseService.getOrderById(searchTerm);
             console.log(order);
-            if (order.data.status === 'OK') {
+            if (order && order.data.status === 'OK') {
                 toast.current?.show({ severity: 'success', summary: 'Success', detail: 'Find order success !'});
+                setChildState(order);
             } else {
                 toast.current?.show({ severity: 'error', summary: 'Error', detail: `${order.data.data}` });
             }
@@ -41,7 +43,7 @@ const baseService: BaseService = new BaseService();
                             id="searchInput"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="p-inputtext-lg border-noround-left border-round-right-lg"
+                            className="p-inputtext-lg border-noround-left border-round-right-lg "
                         />
                         <label htmlFor="searchInput">Search</label>
                     </span>
